@@ -361,8 +361,11 @@ Include example including two volumes only:
         stack-back.volumes: true
         stack-back.volumes.include: "uploaded_media,uploaded_files"
       volumes:
+        # Backed up
         - uploaded_media:/srv/media
         - uploaded_files:/srv/files
+
+        # Excluded by filter
         - /srv/data:/srv/data
 
     volumes:
@@ -379,10 +382,11 @@ Exclude example achieving the same result as the example above.
         stack-back.volumes: true
         stack-back.volumes.exclude: "data"
       volumes:
-        # Excluded by filter
-        - media:/srv/media
         # Backed up
-        - files:/srv/files
+        - uploaded_media:/srv/media
+        - uploaded_files:/srv/files
+
+        # Excluded by filter
         - /srv/data:/srv/data
 
     volumes:
